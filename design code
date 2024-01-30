@@ -1,0 +1,20 @@
+module clock_divider (
+  input wire clk,
+  output reg clk_out
+);
+
+  reg [1:0] counter;
+
+  always @(posedge clk) begin
+    if (counter == 2'b00) begin
+      counter <= 2'b01;
+      clk_out <= 1'b1;
+    end else if (counter == 2'b01) begin
+      counter <= 2'b10;
+      clk_out <= 1'b0;
+    end else begin
+      counter <= 2'b00;
+    end
+  end
+
+endmodule
