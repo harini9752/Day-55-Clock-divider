@@ -1,0 +1,24 @@
+module tb_clock_divider;
+
+  reg clk;
+  wire clk_out;
+
+  clock_divider uut (
+    .clk(clk),
+    .clk_out(clk_out)
+  );
+
+  initial begin
+    // Initialize test
+    clk = 0;
+
+    // Test the clock divider for 20 cycles
+    repeat (20) begin
+      #5 clk = ~clk;
+      $display("Time=%0t clk_out=%b", $time, clk_out);
+    end
+
+    $finish;
+  end
+
+endmodule
